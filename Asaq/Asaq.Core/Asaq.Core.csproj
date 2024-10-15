@@ -1,0 +1,13 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+	<PropertyGroup>
+		<WarningsAsErrors>$(WarningsAsErrors);NU1605;CS8604;CS8632;CS8625;CS8603;CS8619;CS8618;CS8600;CS8602;CS8622</WarningsAsErrors>
+	</PropertyGroup>
+	
+</Project>
