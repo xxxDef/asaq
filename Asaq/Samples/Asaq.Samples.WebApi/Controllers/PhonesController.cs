@@ -28,4 +28,20 @@ public class PhonesController : ControllerBase
 
         return phones;
     }
+
+    public class Item
+    {
+        public string? Name { get; set; }
+    }
+    public class Input
+    {
+        public Item[] Names { get; set; }
+    }
+    [HttpGet("Test")]
+    public Input Get([FromQuery] Input input)
+    {
+        
+
+        return input;
+    }
 }

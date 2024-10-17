@@ -5,10 +5,10 @@ namespace Asaq.Core;
 
 public class WhereQuery<TFields> : WhereQueryImpl<TFields>
 {
-    public TFields? Match { get; set; }
-    public TFields? Contains { get; set; }
-    public TFields? From { get; set; }
-    public TFields? To { get; set; }
+    public TFields[]? Match { get; set; }
+    public TFields[]? Contains { get; set; }
+    public TFields[]? From { get; set; }
+    public TFields[]? To { get; set; }
 
     protected override Expression CreateExpresssion(ParameterExpression input, string conditionName, PropertyInfo prop, object value)
     => conditionName switch
