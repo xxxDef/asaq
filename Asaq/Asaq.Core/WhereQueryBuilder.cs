@@ -13,7 +13,7 @@ public static class WhereQueryBuilder
     public static Expression<Func<T,bool>>? BuildExpression<T>(this IWhereQuery where)
     {
         var param = Expression.Parameter(typeof(T), "x");
-        var expressons = where.CreateExpressions<T>(param).ToArray();
+        var expressons = where.CreateExpressions(param).ToArray();
 
         if (expressons.Length == 0)
             return null;

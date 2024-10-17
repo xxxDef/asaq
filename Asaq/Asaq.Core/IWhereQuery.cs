@@ -4,5 +4,5 @@ namespace Asaq.Core;
 
 public interface IWhereQuery
 {
-    IEnumerable<Expression> CreateExpressions<T>(ParameterExpression input);
+    IEnumerable<Expression> CreateExpressions(ParameterExpression input);
 }

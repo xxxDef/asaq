@@ -5,6 +5,18 @@ namespace Asaq.Core;
 
 public static class TypeInfoEx
 {
+    public static IEnumerable<(PropertyInfo prop, object value)> GetinitializedProperies<T>(this object obj) =>
+        from prop in obj.GetType().GetProperties<T>()
+        let val = prop.GetValue(obj)
+        where val != null
+        select (prop, val);
+    
+    public static IEnumerable<(PropertyInfo prop, object value)> GetinitializedProperies(this object obj) =>
+        from prop in obj.GetType().GetProperties()
+        let val = prop.GetValue(obj)
+        where val != null
+        select (prop, val);
+
     public static IEnumerable<PropertyInfo> GetProperties<T>(this Type type)
         => from p in type.GetProperties()
            where p.PropertyType == typeof(T)
