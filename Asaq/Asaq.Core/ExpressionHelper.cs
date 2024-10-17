@@ -27,35 +27,30 @@ public static class ExpressionHelper
         =>
         prop.PropertyType.IsString() ? input.ExpStringContains(prop, (string)value)
          : throw new NotSupportedException();
+    
     ////////////////////////////////////////////////
     // param.paramProp == value
     ////////////////////////////////////////////////
-    public static Expression ExpEqual(this ParameterExpression param, PropertyInfo paramProp, object value) =>
-        Expression.Equal(
+    public static Expression ExpEqual(this ParameterExpression param, PropertyInfo paramProp, object value)
+    =>  Expression.Equal(
             Expression.Property(param, paramProp),
             Expression.Constant(value, paramProp.PropertyType));
 
-    public static Expression ExpLessThanOrEqual(this ParameterExpression param, PropertyInfo paramProp, object value)
-    {
-        ////////////////////////////////////////////////
-        // param.paramProp <= value
-        ////////////////////////////////////////////////
+    ////////////////////////////////////////////////
+    // param.paramProp <= value
+    ////////////////////////////////////////////////
+    public static Expression ExpLessThanOrEqual(this ParameterExpression param, PropertyInfo paramProp, object value) 
+    => Expression.LessThanOrEqual(
+            Expression.Property(param, paramProp),
+            Expression.Constant(value, paramProp.PropertyType));
 
-        return Expression.LessThanOrEqual(
-                    Expression.Property(param, paramProp),
-                    Expression.Constant(value, paramProp.PropertyType));
-    }
-
+    ////////////////////////////////////////////////
+    // param.paramProp >= value
+    ////////////////////////////////////////////////
     public static Expression ExpGreaterThanOrEqual(this ParameterExpression param, PropertyInfo paramProp, object value)
-    {
-        ////////////////////////////////////////////////
-        // param.paramProp >= value
-        ////////////////////////////////////////////////
-
-        return Expression.GreaterThanOrEqual(
-                    Expression.Property(param, paramProp),
-                    Expression.Constant(value, paramProp.PropertyType));
-    }
+    => Expression.GreaterThanOrEqual(
+            Expression.Property(param, paramProp),
+            Expression.Constant(value, paramProp.PropertyType));
 
     public static Expression ExpStringStartWith(this ParameterExpression param, PropertyInfo paramProp, string value)
     {

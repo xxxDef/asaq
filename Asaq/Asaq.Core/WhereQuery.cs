@@ -13,10 +13,11 @@ public class WhereQuery<TFields> : WhereQueryImpl<TFields>
     protected override Expression CreateExpresssion(ParameterExpression input, string conditionName, PropertyInfo prop, object value)
     => conditionName switch
     {
-        "Match" => input.GetExpression_Match(prop, value),
-        "From" => input.GetExpression_From(prop, value),
-        "To" => input.GetExpression_To(prop, value),
-        "Contains" => input.GetExpression_Contains(prop, value),
+        nameof(Match)    => input.GetExpression_Match(prop, value),
+        nameof(From)     => input.GetExpression_From(prop, value),
+        nameof(To)       => input.GetExpression_To(prop, value),
+        nameof(Contains) => input.GetExpression_Contains(prop, value),
+
         _ => throw new NotImplementedException($"Condition {conditionName} is not supported")
     };
 }
