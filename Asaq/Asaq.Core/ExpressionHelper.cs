@@ -13,14 +13,14 @@ public static class ExpressionHelper
 
     public static Expression GetExpression_From(this ParameterExpression input, PropertyInfo prop, object value)
         =>
-        prop.PropertyType.IsString() ? input.ExpStringEndWith(prop, (string)value)
-        : prop.PropertyType.IsValueType ? input.ExpLessThanOrEqual(prop, value)
+        prop.PropertyType.IsString() ? input.ExpStringStartWith(prop, (string)value)
+        : prop.PropertyType.IsValueType ? input.ExpGreaterThanOrEqual(prop, value)
         : throw new NotSupportedException();
 
     public static Expression GetExpression_To(this ParameterExpression input, PropertyInfo prop, object value)
         =>
-        prop.PropertyType.IsString() ? input.ExpStringStartWith(prop, (string)value)
-        : prop.PropertyType.IsValueType ? input.ExpGreaterThanOrEqual(prop, value)
+        prop.PropertyType.IsString() ? input.ExpStringEndWith(prop, (string)value)
+        : prop.PropertyType.IsValueType ? input.ExpLessThanOrEqual(prop, value)
         : throw new NotSupportedException();
 
     public static Expression GetExpression_Contains(this ParameterExpression input, PropertyInfo prop, object value)

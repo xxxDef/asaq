@@ -16,7 +16,7 @@ public class PhonesController : ControllerBase
         this.logger = logger;
     }
 
-    public record PhonesWhere(string? Name, int? Year, Developer? Company, double? Weight);
+    public record PhonesWhere(string[]? Name, int? Year, Developer? Company, double? Weight);
     public record PhonesOrder(int? Name, int? Year, int? Company, int? Weight);
 
     [HttpGet("Filter")]
@@ -28,20 +28,11 @@ public class PhonesController : ControllerBase
 
         return phones;
     }
-
-    public class Item
-    {
-        public string? Name { get; set; }
-    }
-    public class Input
-    {
-        public Item[] Names { get; set; }
-    }
+    
     [HttpGet("Test")]
-    public Input Get([FromQuery] Input input)
+    public WhereQuery<PhonesWhere> Test([FromQuery] WhereQuery<PhonesWhere> where, [FromQuery] OrderQuery<PhonesOrder> order)
     {
-        
-
-        return input;
+        return where;
     }
+
 }
